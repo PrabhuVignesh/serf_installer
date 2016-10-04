@@ -1,0 +1,15 @@
+---
+- hosts: nodes
+  sudo: yes
+  tasks:
+    - name: copying serf binary 
+      copy:
+        src: files/serf
+        dest: /usr/local/bin
+        owner: root
+        group: root
+      notify: check copy
+
+  handlers:
+    - name: check copy
+      command: serf
